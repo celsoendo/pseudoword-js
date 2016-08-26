@@ -1,0 +1,32 @@
+{
+  "name": "pseudoword-js",
+  "version": "1.0.0",
+  "description": "Pseudoword generator",
+  "author": "Celso Endo <pseudoword-js@celsoendo.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/celsoendo/pseudoword-js",
+  "readmeFilename": "README.md",
+  "repository": "celsoendo/pseudoword-js",
+  "keywords": [
+    "random",
+    "pseudoword",
+    "random pseudoword",
+    "pronounceable word",
+    "pseudoword generator"
+  ],
+  "bin": "cli.js",
+  "scripts": {
+    "test": "echo \"Pending...\" && exit 1"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/celsoendo/pseudoword-js/issues"
+  },
+  "dependencies": {
+    "meow": "^3.7.0",
+    "random-js": "^1.0.8"
+  }
+}
