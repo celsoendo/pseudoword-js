@@ -8,11 +8,11 @@ Generates a random pseudoword
 ## Usage
 
 ```
-$ npm install --save pseudoword-js
+$ npm install --save pseudoword
 ```
 
 ```js
-const pseudoword = require('pseudoword-js');
+const pseudoword = require('pseudoword');
 
 pseudoword(7);
 //=> 'noorija'
@@ -24,7 +24,7 @@ pseudoword(5);
 ## CLI
 
 ```
-$ npm install --global pseudoword-js
+$ npm install --global pseudoword
 ```
 
 ```
