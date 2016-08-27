@@ -26,7 +26,6 @@
     "url": "https://github.com/celsoendo/pseudoword-js/issues"
   },
   "dependencies": {
-    "meow": "^3.7.0",
-    "random-js": "^1.0.8"
+    "meow": "^3.7.0"
   }
 }

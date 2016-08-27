@@ -1,7 +1,4 @@
 'use strict';
-const Random = require("random-js");
-const randomEngine = new Random(Random.engines.mt19937().autoSeed());
-
 const MAX_CHARS = 50
 
 const dictRules = [
@@ -93,7 +90,7 @@ const getGroup = (lastGroupName, pseudowordMaxLength, pseudowordCurrentLength) =
       return true
     })
 
-  return dictFilter[randomEngine.integer(0, dictFilter.length - 1)]
+  return dictFilter[Math.floor(Math.random() * dictFilter.length)]
 }
 
 const generate = (maxLength, pseudoword, lastGroupName) => {
@@ -110,7 +107,7 @@ const generate = (maxLength, pseudoword, lastGroupName) => {
   const dictGroup = getGroup(lastGroupName, maxLength, currentLength)
 
   // Add a random character from this group to the pseudoword
-  pseudoword = pseudoword + dictGroup.chars[randomEngine.integer(0, dictGroup.chars.length - 1)]
+  pseudoword = pseudoword + dictGroup.chars[Math.floor(Math.random() * dictGroup.chars.length)]
 
   // Set the last group name
   lastGroupName = dictGroup.name
