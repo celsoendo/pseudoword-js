@@ -15,13 +15,14 @@
     "pronounceable word",
     "pseudoword generator"
   ],
-  "bin": "cli.js",
+  "bin": "dist/cli.js",
   "scripts": {
-    "test": "echo \"Pending...\" && exit 1"
+    "test": "echo \"Pending...\" && exit 1",
+    "build": "tsc"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "dist/index.js",
+    "dist/cli.js"
   ],
   "bugs": {
     "url": "https://github.com/celsoendo/pseudoword-js/issues"
