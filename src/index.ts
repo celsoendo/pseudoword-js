@@ -65,17 +65,17 @@ const dictRules = [
   }
 ]
 
-const getGroup = (lastGroupName, pseudowordMaxLength, pseudowordCurrentLength) => {
-  const groupMaxChar = pseudowordMaxLength - pseudowordCurrentLength
-  let dictFilter;
+const getGroup = (lastGroupName: string, pseudowordMaxLength: number, pseudowordCurrentLength: number): DictRule => {
+  const groupMaxChar = pseudowordMaxLength - pseudowordCurrentLength;
+  let dictFilter: DictRule[];
 
   if (lastGroupName === '') {
-    dictFilter = dictRules
+    dictFilter = (dictRules as DictRule[])
       // Remove groups that are not allowed at the start of the pseudoword
-      .filter(group => (group.allowedAtStart !== undefined ? group.allowedAtStart : true))
+      .filter(group => (group.allowedAtStart !== undefined ? group.allowedAtStart : true));
   } else {
     dictFilter = dictRules
-      .filter(group => group.allowedAfter.indexOf(lastGroupName) >= 0)
+      .filter(group => group.allowedAfter.indexOf(lastGroupName) >= 0);
   }
 
   dictFilter = dictFilter
@@ -84,35 +84,35 @@ const getGroup = (lastGroupName, pseudowordMaxLength, pseudowordCurrentLength) =
     // Remove groups not allowed at the end of the pseudoword
     .filter(group => {
       if (pseudowordCurrentLength + group.length === pseudowordMaxLength) {
-        return (group.allowedAtEnd !== undefined ? group.allowedAtEnd : true)
+        return (group.allowedAtEnd !== undefined ? group.allowedAtEnd : true);
       }
 
-      return true
-    })
+      return true;
+    });
 
-  return dictFilter[Math.floor(Math.random() * dictFilter.length)]
+  return dictFilter[Math.floor(Math.random() * dictFilter.length)];
 }
 
-const generate = (maxLength, pseudoword, lastGroupName) => {
-  maxLength = maxLength || 1
-  pseudoword = pseudoword || ''
-  lastGroupName = lastGroupName || ''
+const generate = (maxLength: number, pseudoword: string = '', lastGroupName: string = ''): string => {
+  maxLength = maxLength || 1;
+  pseudoword = pseudoword || '';
+  lastGroupName = lastGroupName || '';
 
-  const currentLength = pseudoword.length
+  const currentLength = pseudoword.length;
   if (currentLength === maxLength) {
-    return pseudoword
+    return pseudoword;
   }
 
   // Get the group to be used in this iteration
-  const dictGroup = getGroup(lastGroupName, maxLength, currentLength)
+  const dictGroup: DictRule = getGroup(lastGroupName, maxLength, currentLength);
 
   // Add a random character from this group to the pseudoword
-  pseudoword = pseudoword + dictGroup.chars[Math.floor(Math.random() * dictGroup.chars.length)]
+  pseudoword = pseudoword + dictGroup.chars[Math.floor(Math.random() * dictGroup.chars.length)];
 
   // Set the last group name
-  lastGroupName = dictGroup.name
+  lastGroupName = dictGroup.name;
 
-  return generate(maxLength, pseudoword, lastGroupName)
+  return generate(maxLength, pseudoword, lastGroupName);
 }
 
-module.exports = (length) => generate((length > MAX_CHARS ? MAX_CHARS : length))
+export default (length: number): string => generate((length > MAX_CHARS ? MAX_CHARS : length));
